@@ -1,9 +1,7 @@
 interface IErrorProps {
   message: string;
   statusCode?: number;
-  code:
-    | "generic"
-    | "invalid.line"
+  code: "generic" | "invalid.line";
 }
 
 class AppError {
