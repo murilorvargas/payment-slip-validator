@@ -37,6 +37,22 @@ class PaymentSlipProvider implements IPaymentSlipProvider {
     return calculatedVerifyingDigit === verifyingDigit;
   }
 
+  getBarCode(payment_slip: string): string {
+    const paymentSlipCharactersArray = payment_slip.split("");
+
+    const barCode = ""
+      .concat(paymentSlipCharactersArray.slice(0, 3).join(""))
+      .concat(paymentSlipCharactersArray[3])
+      .concat(paymentSlipCharactersArray[32])
+      .concat(paymentSlipCharactersArray.slice(33, 37).join(""))
+      .concat(paymentSlipCharactersArray.slice(37, 47).join(""))
+      .concat(paymentSlipCharactersArray.slice(4, 9).join(""))
+      .concat(paymentSlipCharactersArray.slice(10, 20).join(""))
+      .concat(paymentSlipCharactersArray.slice(21, 31).join(""));
+
+    return barCode;
+  }
+
   getExpirationDate(expirationFactor: string): Date {
     const expirationDate = new Date(2000, 6, 3);
     const daysToSum = Number(expirationFactor) - 1000;
