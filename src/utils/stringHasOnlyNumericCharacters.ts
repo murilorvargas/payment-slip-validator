@@ -1,4 +1,4 @@
-function stringHasOnlyNumericCharacters(string: string) {
+function stringHasOnlyNumericCharacters(string: string): boolean {
   return /^\d+$/.test(string);
 }
 
