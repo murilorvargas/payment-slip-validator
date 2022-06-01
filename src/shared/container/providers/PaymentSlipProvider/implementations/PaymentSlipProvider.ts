@@ -31,8 +31,10 @@ class PaymentSlipProvider implements IPaymentSlipProvider {
         0
       );
 
-    const calculatedVerifyingDigit =
+    let calculatedVerifyingDigit =
       Math.ceil(sumOfFieldMultiplication / 10) * 10 - sumOfFieldMultiplication;
+
+    if (calculatedVerifyingDigit === 10) calculatedVerifyingDigit = 0;
 
     return calculatedVerifyingDigit === verifyingDigit;
   }
@@ -53,7 +55,13 @@ class PaymentSlipProvider implements IPaymentSlipProvider {
     return barCode;
   }
 
-  getExpirationDate(expirationFactor: string): Date {
+  getAmount(payment_slip: string): string {
+    const amount = payment_slip.substr(37, 10);
+    return amount;
+  }
+
+  getExpirationDate(payment_slip: string): Date {
+    const expirationFactor = payment_slip.substr(33, 4);
     const expirationDate = new Date(2000, 6, 3);
     const daysToSum = Number(expirationFactor) - 1000;
     expirationDate.setDate(expirationDate.getDate() + daysToSum);
