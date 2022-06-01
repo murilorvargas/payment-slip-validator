@@ -1,5 +1,6 @@
 interface IPaymentSlipProvider {
   fieldIsValid(field: string): boolean;
+  getBarCode(payment_slip: string): string;
   getExpirationDate(expirationFactor: string): Date;
 }
 
