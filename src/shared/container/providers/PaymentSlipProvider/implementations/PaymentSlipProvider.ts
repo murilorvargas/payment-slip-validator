@@ -36,6 +36,14 @@ class PaymentSlipProvider implements IPaymentSlipProvider {
 
     return calculatedVerifyingDigit === verifyingDigit;
   }
+
+  getExpirationDate(expirationFactor: string): Date {
+    const expirationDate = new Date(2000, 6, 3);
+    const daysToSum = Number(expirationFactor) - 1000;
+    expirationDate.setDate(expirationDate.getDate() + daysToSum);
+
+    return expirationDate;
+  }
 }
 
 export { PaymentSlipProvider };
