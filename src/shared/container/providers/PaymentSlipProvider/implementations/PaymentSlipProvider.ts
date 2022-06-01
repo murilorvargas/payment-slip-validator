@@ -55,6 +55,39 @@ class PaymentSlipProvider implements IPaymentSlipProvider {
     return barCode;
   }
 
+  barCodeIsValid(bar_code: string): boolean {
+    const verifyingDigit = Number(bar_code.substr(4, 1));
+    const barCodeCharactersArray = bar_code.split("");
+
+    barCodeCharactersArray.splice(4, 1);
+    barCodeCharactersArray.reverse();
+
+    let multiplier = 1;
+
+    const sumOfBarCodeMultiplication = barCodeCharactersArray.reduce(
+      (characterSum, currentCharacter) => {
+        if (multiplier > 8) {
+          multiplier = 2;
+        } else multiplier++;
+
+        return characterSum + Number(currentCharacter) * multiplier;
+      },
+      0
+    );
+
+    let calculatedVerifyingDigit = 11 - (sumOfBarCodeMultiplication % 11);
+
+    if (
+      calculatedVerifyingDigit === 0 ||
+      calculatedVerifyingDigit === 10 ||
+      calculatedVerifyingDigit === 11
+    ) {
+      calculatedVerifyingDigit = 1;
+    }
+
+    return calculatedVerifyingDigit === verifyingDigit;
+  }
+
   getAmount(payment_slip: string): string {
     const amount = payment_slip.substr(37, 10);
     return amount;
