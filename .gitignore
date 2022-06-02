@@ -6,3 +6,6 @@ dist/
 
 #CONFIG FILES
 .env
+
+#TEST COVERAGE
+.coverage
