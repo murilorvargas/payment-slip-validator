@@ -8,14 +8,6 @@
   <a href="#memo-license">License</a>
 </p>
 
-<p align="center">
-  <img  src="https://img.shields.io/github/license/murilorvargas/payment-slip-validator?color=FF57B2&labelColor=D7D7D7" alt="License">
-
-  <img src="https://img.shields.io/github/languages/top/murilorvargas/payment-slip-validator?color=FF57B2&labelColor=D7D7D7" alt="Languages">
-
-  <img src="https://img.shields.io/github/repo-size/murilorvargas/payment-slip-validator?color=FF57B2&labelColor=D7D7D7" alt="Stars">
-</p>
-
 <br>
 
 ## 🚀 Technologies
@@ -34,10 +26,6 @@ Required to install:
 - [Git](https://git-scm.com/)
 - [Yarn](https://classic.yarnpkg.com)
 - [Docker](https://www.docker.com/get-started/)
-
-Create account and configure external services:
-
-- [Prismic CMS](https://prismic.io/)
 
 ## 🏁 Starting
 
