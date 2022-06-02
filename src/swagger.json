@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Payment Slip Validator",
+    "version": "1.0.0",
+    "contact": {
+      "email": "muriraubach@gmail.com"
+    }
+  },
+  "paths": {
+    "/boleto/{payment_slip}": {
+      "get": {
+        "tags": [
+          "payment_slip"
+        ],
+        "summary": "Validate payment slip",
+        "description": "Validates a payment slip and brings its expiration date barcode and value",
+        "parameters": [
+          {
+            "name": "payment_slip",
+            "in": "path",
+            "description": "Payment slip",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Linha digitável valida",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                      "barCode": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "string"
+                      },
+                      "expirationDate": {
+                        "type": "string"
+                      }
+                    }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Linha digitável invalida"
+          }
+        }
+      }
+    }
+  }
+}
