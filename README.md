@@ -54,10 +54,5 @@ $ docker-compose up -d
 # The server will initialize in the <http://localhost:8080>
 ```
 
-### AWS
-
-[AWS Deploy](http://18.230.71.4:8080/api-docs/)
-
-## :memo: License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
